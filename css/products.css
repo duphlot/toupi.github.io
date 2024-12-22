@@ -1,0 +1,219 @@
+.form-select {
+    width: fit-content;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    color: #e3abee; 
+    text-align: center;
+    appearance: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    display: block;
+    transition: all 0.2s ease-in-out;
+    font-weight: bold; /* Added to make the text bold */
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    background-color: #ffffff;
+}
+
+
+
+
+
+#products .card {
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+#products .card {
+    border-radius: 30px;
+}
+
+#products .carousel-inner {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#products .card-body {
+    color: #000000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 1px solid #333;
+    background-color: #FFF6E3;
+}
+#products .card-text {
+    color: #000000;
+    text-shadow: none;
+}
+#products .card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+#products img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 1px solid #333;
+}
+#products .addToCartBtn, .soldOut {
+    background-color: #ddd7fc;
+    border: none;
+    color: #000000;
+    border: 1px solid #333;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    margin: 0px 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#products .card:hover .addToCartBtn, .soldOut {
+    display: block;
+    z-index: 1;
+}
+
+#products .addToCartBtn:hover, .soldOut:hover {
+    background-color: #e8aaed;
+    transform: scale(1.05);
+}
+
+#product-filters .btn, #cart-products .btn {
+    background-color: #f7efd8;
+    border-color: #ecd8ac;
+    color: black;
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border-width: 1px;
+    text-decoration: none;
+}
+
+#product-filters .btn:hover, #cart-products .btn:hover {
+    background-color: #d2b98d;
+    border-color: #d2b98d;
+    color: black;
+}
+
+#product-filters .btn.active, #cart-products .btn.active {
+    background-color: #A594F9;
+    border-color: #BFECFF;
+    color: black;
+    border: 1px solid #333;
+    text-decoration: underline;
+}
+
+#product-filters .btn:focus, #cart-products .btn:focus {
+    outline: none;
+}
+
+#product-filters .btn:not(.active), #cart-products .btn:not(.active) {
+    color: black;
+    border-color: #ecd8ac;
+}
+#cartContainer {
+    display: flex;
+    flex-direction: column;
+    max-height: 250px;
+    width: 100%;
+    overflow-y: auto;
+    padding-right: 10px;
+    position: relative;
+    border-radius: 8px;
+}
+
+#products .cart-product {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    margin: 2px 0;
+    padding: -20px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#products .cart-product:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#products .cart-product-title {
+    font-size: 60%;
+    font-weight: bold;
+    color: #333;
+    margin-left: 5%;
+    flex: 1;
+}
+
+#products .cart-product-price {
+    font-size: 50%;
+    color: #666;
+    flex: 0 0 auto;
+}
+
+#products .removeFromCartBtn {
+    font-size: 16px;
+    cursor: pointer;
+    color: #ff6b6b;
+    background: none;
+    border: none;
+    transition: color 0.2s;
+    margin-left: 10px;
+}
+
+#products .removeFromCartBtn:hover {
+    color: #ff3b3b;
+}
+
+#cartContainer::-webkit-scrollbar {
+    width: 4px;
+    display: none;
+}
+
+#cartContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+#product-filters .btn, #cart-products .btn {
+    font-size: 11px;
+    padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+    #cartContainer {
+        max-height: 200px;
+    }
+
+    #products .cart-product {
+        padding: 10px;
+        margin-right: 5px;
+    }
+
+    #products .cart-product-title {
+        font-size: 14px;
+    }
+
+    #products .cart-product-price {
+        font-size: 12px;
+    }
+
+    #products .removeFromCartBtn {
+        font-size: 14px;
+    }
+
+    #product-filters .btn, #cart-products .btn {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+}

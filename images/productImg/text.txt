@@ -1,0 +1,16 @@
+product01-pastel collection-bracelets-on-30,000
+product02-vườn cây-keyring-on-15,000
+product03-zòng tay tình bạng-bracelets-on-28,000
+product04-ngũ cốc cầu vồng-bracelets-on-25,000
+product09-chưa có tên-bracelets-on-28,000
+product05-Xmas bracelet-bracelets-on-35,000
+product06-miles morales-bracelets-on-35,000
+product07-gwen stacy-bracelets-on-35,000
+product08-spiderman-bracelets-on-35,000
+product10-keyring nơ-keyring-on-25,000
+product11-keyring nơ sến-keyring-on-45,000
+product12-stardust bracelet-bracelets-on-20,000
+product13-dango keyring-keyring-on-10,000
+product14-sweat treats-bracelets-on-20,000
+product15-starlights-bracelets-on-35,000
+

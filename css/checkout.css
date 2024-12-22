@@ -1,0 +1,228 @@
+.adjust-quantity {
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    font-size: 0.9em;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+.adjust-quantity:hover {
+    background-color: #e2e6ea;
+}
+
+.quantity {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+
+.order-summary-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.2em;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.cart-items,
+.discount-combos {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ccc;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.item-details {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.item-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.item-price-quantity {
+    color: #555;
+    font-size: 0.9em;
+}
+
+.item-total-price {
+    font-weight: bold;
+    color: #333;
+}
+
+.trash-icon {
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s;
+}
+
+.trash-icon:hover {
+    color: #d9534f;
+}
+
+/* Các combo giảm giá */
+.discount-combo {
+    font-size: 0.9em;
+    color: #333;
+    background-color: #f2f2f2;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Tổng tiền */
+.total-amount {
+    text-align: right;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#checkout-section body {
+    font-family: 'Fira Code', monospace;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#checkout-section .navbar {
+    background-color: #343a40;
+    padding: 1rem;
+}
+
+.col-md-6::-webkit-scrollbar {
+    display: none;
+}
+
+.col-md-6 {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#checkout-section .navbar-brand img {
+    height: 2.5rem;
+}
+
+#checkout-section .nav-link {
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+#checkout-section .nav-link:hover {
+    color: #ffc107 !important;
+}
+
+#checkout-section .custom-nav-item {
+    margin-left: 1.25rem;
+}
+
+#checkout-section .marquee-container {
+    background-color: #ffc107;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+#checkout-section .marquee-text {
+    color: #343a40;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+#checkout-section .checkout-form {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#checkout-section .form-label {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+#checkout-section .btn-primary {
+    background-color: #343a40;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+#checkout-section .btn-primary:hover {
+    background-color: #ffc107;
+    color: #343a40;
+}
+
+@media (max-width: 768px) {
+    #checkout-section .navbar-brand img {
+        height: 2rem;
+    }
+
+    #checkout-section .nav-link {
+        font-size: 0.875rem;
+    }
+
+    #checkout-section .custom-nav-item {
+        margin-left: 1rem;
+    }
+
+    #checkout-section .marquee-container {
+        padding: 0.25rem 0.5rem;
+    }
+
+    #checkout-section .marquee-text {
+        font-size: 0.875rem;
+    }
+
+    #checkout-section .checkout-form {
+        padding: 1.5rem;
+    }
+
+    #checkout-section .form-label {
+        font-size: 0.875rem;
+    }
+
+    #checkout-section .btn-primary {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}

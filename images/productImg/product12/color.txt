@@ -1,0 +1,8 @@
+black
+orange
+yellow
+green
+blue
+purple
+pink
+deep-pink
