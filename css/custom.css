@@ -1,0 +1,69 @@
+
+
+.custom-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.custom-image-wrapper {
+    flex: 1 1 calc(25% - 15px); /* Mặc định là 4 ảnh mỗi hàng */
+    max-width: calc(25% - 15px);
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.custom-image-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.custom-image {
+    width: 100%; /* Chiều rộng ảnh tự động co giãn */
+    height: auto; /* Giữ tỷ lệ ảnh, không giới hạn chiều cao */
+}
+
+.custom-caption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.custom-image-wrapper:hover .custom-caption {
+    opacity: 1;
+}
+
+/* Media Queries để thay đổi số lượng ảnh trên một hàng */
+@media (max-width: 1200px) {
+    .custom-image-wrapper {
+        flex: 1 1 calc(33.33% - 15px); /* 3 ảnh mỗi hàng */
+        max-width: calc(33.33% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-image-wrapper {
+        flex: 1 1 calc(50% - 15px); /* 2 ảnh mỗi hàng */
+        max-width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-image-wrapper {
+        flex: 1 1 100%; /* 1 ảnh mỗi hàng */
+        max-width: 100%;
+    }
+}

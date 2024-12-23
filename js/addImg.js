@@ -1,4 +1,4 @@
-// Product Grid
+// New Products
 const productGrid = document.getElementById("product-grid");
 const productImagePath = "images/newProducts/";
 const productTextFile = "images/newProducts/text.txt";
@@ -17,7 +17,7 @@ async function initProductGrid() {
 
     products.forEach(product => {
         const columnDiv = document.createElement("div");
-        columnDiv.classList.add("col-lg-3", "col-md-6", "mb-4");
+        columnDiv.classList.add("new-product");
 
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("card", product.position);
@@ -31,7 +31,7 @@ async function initProductGrid() {
         labelDiv.textContent = product.label;
 
         cardDiv.appendChild(imgElement);
-        cardDiv.appendChild(labelDiv);
+        //cardDiv.appendChild(labelDiv);
         columnDiv.appendChild(cardDiv);
         productGrid.appendChild(columnDiv);
     });
@@ -90,7 +90,7 @@ async function fetchProductData() {
 async function createProductCard(product, index) {
     const imageFolder = `${productPath}${product.folder}`;
     const imageUrls = [];
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 20; i++) {
         const imageUrl = `${imageFolder}/${i}.jpg`;
         try {
             const response = await fetch(imageUrl);
@@ -200,8 +200,47 @@ async function initProductList() {
     });
 }
 
+// Custom Gallery
+const customPath = "images/custom/";
+const customContainer = document.getElementById("custom-gallery");
+
+async function fetchCustomImages() {
+    try {
+        const response = await fetch(`${customPath}/text.txt`);
+        const text = await response.text();
+        return text.split("\n").map(line => {
+            const [imageName, caption] = line.split("-").map(item => item.trim());
+            return { imageName, caption };
+        }).filter(item => item.imageName && item.caption);
+    } catch (error) {
+        console.error("Error fetching custom images:", error);
+    }
+}
+
+async function initCustomGallery() {
+    const customImages = await fetchCustomImages();
+    customImages.forEach(item => {
+        const imageWrapper = document.createElement("div");
+        imageWrapper.classList.add("custom-image-wrapper");
+
+        const imgElement = document.createElement("img");
+        imgElement.src = `${customPath}${item.imageName}`;
+        imgElement.alt = item.caption;
+        imgElement.classList.add("custom-image");
+
+        const captionDiv = document.createElement("div");
+        captionDiv.classList.add("custom-caption");
+        captionDiv.textContent = item.caption;
+
+        imageWrapper.appendChild(imgElement);
+        imageWrapper.appendChild(captionDiv);
+        customContainer.appendChild(imageWrapper);
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     initProductGrid();
     initCarousel();
     initProductList();
+    initCustomGallery();
 });
