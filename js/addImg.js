@@ -14,6 +14,7 @@ async function fetchProductDataForGrid() {
 
 async function initProductGrid() {
     const products = await fetchProductDataForGrid();
+    const fragment = document.createDocumentFragment();
 
     products.forEach(product => {
         const columnDiv = document.createElement("div");
@@ -33,8 +34,10 @@ async function initProductGrid() {
         cardDiv.appendChild(imgElement);
         //cardDiv.appendChild(labelDiv);
         columnDiv.appendChild(cardDiv);
-        productGrid.appendChild(columnDiv);
+        fragment.appendChild(columnDiv);
     });
+
+    productGrid.appendChild(fragment);
 }
 
 // Carousel
@@ -53,6 +56,7 @@ async function fetchLabels() {
 
 async function initCarousel() {
     const labels = await fetchLabels();
+    const fragment = document.createDocumentFragment();
 
     labels.forEach((item, index) => {
         const imageSrc = `${carouselImagePath}${item.imageName}`;
@@ -70,8 +74,10 @@ async function initCarousel() {
 
         carouselItem.appendChild(imgElement);
         carouselItem.appendChild(labelDiv);
-        carouselContainer.appendChild(carouselItem);
+        fragment.appendChild(carouselItem);
     });
+
+    carouselContainer.appendChild(fragment);
 }
 
 // Product List
@@ -89,18 +95,17 @@ async function fetchProductData() {
 
 async function createProductCard(product, index) {
     const imageFolder = `${productPath}${product.folder}`;
-    const imageUrls = [];
-    for (let i = 1; i <= 20; i++) {
-        const imageUrl = `${imageFolder}/${i}.jpg`;
-        try {
-            const response = await fetch(imageUrl);
-            if (response.ok) {
-                imageUrls.push(imageUrl);
+    const imageUrls = await Promise.all(
+        Array.from({ length: 20 }, (_, i) => `${imageFolder}/${i + 1}.jpg`).map(async (url) => {
+            try {
+                const response = await fetch(url);
+                if (response.ok) return url;
+            } catch (error) {
+                console.error(`Error fetching image ${url}:`, error);
             }
-        } catch (error) {
-            console.error(`Error fetching image ${imageUrl}:`, error);
-        }
-    }
+            return null;
+        })
+    ).then(urls => urls.filter(url => url !== null));
 
     const colDiv = document.createElement("div");
     colDiv.classList.add("col", "product-category", product.filter);
@@ -194,11 +199,14 @@ async function createProductCard(product, index) {
 
 async function initProductList() {
     const products = await fetchProductData();
+    const fragment = document.createDocumentFragment();
 
-    products.forEach(async (product, index) => {
+    await Promise.all(products.map(async (product, index) => {
         const productCard = await createProductCard(product, index);
-        productListContainer.appendChild(productCard);
-    });
+        fragment.appendChild(productCard);
+    }));
+
+    productListContainer.appendChild(fragment);
 }
 
 // Custom Gallery
@@ -220,6 +228,8 @@ async function fetchCustomImages() {
 
 async function initCustomGallery() {
     const customImages = await fetchCustomImages();
+    const fragment = document.createDocumentFragment();
+
     customImages.forEach(item => {
         const imageWrapper = document.createElement("div");
         imageWrapper.classList.add("custom-image-wrapper");
@@ -235,8 +245,10 @@ async function initCustomGallery() {
 
         imageWrapper.appendChild(imgElement);
         imageWrapper.appendChild(captionDiv);
-        customContainer.appendChild(imageWrapper);
+        fragment.appendChild(imageWrapper);
     });
+
+    customContainer.appendChild(fragment);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

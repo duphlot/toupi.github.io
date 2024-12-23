@@ -179,7 +179,7 @@
 }
 
 #checkout .billing-details , .order-summary{
-    max-height: 400px;
+    max-height: 65vh;
     overflow: auto;
     scrollbar-width: none; 
     -ms-overflow-style: none;
