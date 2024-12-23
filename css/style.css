@@ -94,17 +94,59 @@ pre {
 
 
 .text-container {
-    text-align: center;
-    font-size: 2rem;
-    animation: float 3s infinite ease-in-out;
-  }
+    text-align: left;
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+    color: #333;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+}
 
-  .text-container span {
-    display: inline-block;
-    font-family: 'Comic Sans MS', cursive;
+.text-container ol {
+    padding-left: 20px;
+    margin: 20px 0;
+    list-style-type: none;
+}
+
+.text-container ol > li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 2vh;
+}
+
+.text-container ol > li:before {
+    position: absolute;
+    left: 0;
+    top: 0;
     color: #ff69b4;
+    font-size: 1.2rem;
+}
+
+.text-container ul {
+    padding-left: 40px;
+    list-style-type: "🌟";
+}
+
+.text-container ul li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.text-container span {
+    display: inline-block;
+    font-weight: bold;
+    color: #ff69b4;
+    font-family: 'Comic Sans MS', cursive;
     animation: bounce 2s infinite alternate;
-  }
+}
+
+.text-container hr {
+    border: 0;
+    border-top: 2px dashed #ff69b4;
+    margin: 20px 0;
+}
 
   .logo {
     text-align: center;
@@ -227,6 +269,48 @@ pre {
     opacity: 0.8;
 }
 @media (max-width: 850px) {
+
+    /*warning*/
+    .text-container {
+        font-size: 1.2rem;
+        padding: 15px;
+        margin: 20px auto; 
+        line-height: 1.6; 
+    }
+
+    .text-container h2{
+        font-size: 1.2rem;
+    }
+
+    .text-container ol {
+        padding-left: 15px; 
+    }
+
+    .text-container ul {
+        padding-left: 25px;
+    }
+
+    .text-container ol > li {
+        padding-left: 1.5em; 
+    }
+
+    .text-container ol > li:before {
+        font-size: 1rem; 
+    }
+
+    .text-container ul li {
+        margin-bottom: 8px; 
+    }
+
+    .text-container span {
+        animation: none;
+    }
+
+    .text-container hr {
+        margin: 15px 0; 
+    }
+
+    /*section*/
     .section{
         border-top-left-radius: 0;
         border-top-right-radius: 0;
