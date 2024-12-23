@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toupi.bnb</title>
+    <link rel="icon" href="images/logo/logoNavbar.png" sizes="16x16" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class = "container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <a class="navbar-brand">
+                        <img src="images/logo/logoNavbar.png" alt="Logo" class="navbar-logo">
+                    </a>
+                    <a class="nav-link">
+                        <div class="marquee-container d-flex justify-content-between align-items-center">
+                            <marquee class="marquee-text">Welcome to the toupi.bnb! ˚✧‧₊This grocery store is banking only˚⟡౨ৎ</marquee>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="container" style="margin-right: 0;">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item custom-nav-item">
+                        <a class="nav-link" href="index.html" onclick="showSection('home')">HOME</a>
+                    </li>
+                    <li class="nav-item custom-nav-item">
+                        <a class="nav-link" href="index.html" onclick="showSection('products')">PRODUCTS</a>
+                    </li>
+                    <li class="nav-item custom-nav-item">
+                        <a class="nav-link" href="index.html" onclick="showSection('custom')">CUSTOM</a>
+                    </li>
+                    <li class="nav-item custom-nav-item">
+                        <a class="nav-link" href="index.html" onclick="showSection('feedback')">FEEDBACK</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="checkout">
+        <link rel="stylesheet" href="css/checkout.css">
+        <form id="checkout-form" class="checkout-form">
+            <div class="row">
+                <div class="col-md-6 billing-details">
+                    <h4 class="mb-4" style="font-family: 'Fira Code', monospace;">Billing Details</h4>
+                    <div class="mb-3">
+                        <label for="billing-name" class="form-label"> What's your name? / Bạn tên dì dãy?</label>
+                        <input type="text" class="form-control" id="billing-name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="billing-email" class="form-label">Facebook Profile Link</label>
+                        <input type="url" class="form-control" id="billing-email" required>
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="billing-address" class="form-label">Where do you want to receive?/ Nhận hàng ở đâu</label>
+                        <select class="form-control" id="billing-address" required onchange="toggleOtherAddress(this)">
+                            <option value="HCMUT CS Lý Thường Kiệt">Đại học Bách Khoa cơ sở Lý Thường Kiệt</option>
+                            <option value="other">Nơi Khác</option>
+                        </select>
+                        <input type="text" class="form-control mt-2" id="other-address" placeholder="Nhập địa chỉ khác" style="display: none;">
+                    </div>
+                    <div class="mb-3 d-flex flex-column flex-md-row justify-content-between">
+                        <div class="me-2 mb-2 mb-md-0" style="flex: 1;">
+                            <label for="delivery-day" class="form-label">Chọn ngày giao hàng</label>
+                            <input type="date" class="form-control" id="delivery-day" required min="2024-12-02" max="2024-12-07">
+                        </div>
+                        <div style="flex: 1;">
+                            <label for="delivery-time" class="form-label">Chọn thời gian giao hàng</label>
+                            <select class="form-control" id="delivery-time" required>
+                                <option value="Sáng (8:00 - 12:00)">Sáng (8:00 - 12:00)</option>
+                                <option value="Chiều (12:00 - 18:00)">Chiều (12:00 - 18:00)</option>
+                                <option value="Tối (18:00 - 22:00)">Tối (18:00 - 22:00)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="billing-number" class="form-label">Number / Xin số đi em</label>
+                        <input type="text" class="form-control" id="billing-number" required>
+                    </div>
+                </div>
+                <!-- Order Summary -->
+                <div class="col-md-6 order-summary">
+                    <h4 class="mb-4" style="font-family: 'Fira Code', monospace;">Order Summary</h4>
+                    <div id="cartItems" class="mb-3"></div>
+                    <div id="discountCombos" style="margin-top: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;"></div>
+                    <p><strong>Total after discountCombos:</strong> <span id="subtotal">0</span></p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary w-50">Place Order</button>
+            </div>
+            
+            <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1049;"></div>
+            
+            <div id="loading" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1050;">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <div id="success" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1050; text-align: center;">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="green" stroke-width="2" />
+                    <path id="checkmark" d="M6 12l4 4 8-8" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            
+            <style>
+                /* Checkmark animation */
+                #success svg {
+                    animation: fadeIn 0.5s ease forwards;
+                }
+            
+                /* Draw checkmark animation */
+                #checkmark {
+                    stroke-dasharray: 22; /* length of the checkmark path */
+                    stroke-dashoffset: 22;
+                    animation: draw 1s ease forwards;
+                }
+            
+                /* Fade in animation for the whole SVG */
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: scale(0.9); }
+                    to { opacity: 1; transform: scale(1); }
+                }
+            
+                /* Draw checkmark animation */
+                @keyframes draw {
+                    from { stroke-dashoffset: 22; }
+                    to { stroke-dashoffset: 0; }
+                }
+            </style>
+            
+            <script>
+                function validateForm(event) {
+                    event.preventDefault();
+                    const form = document.getElementById('checkout-form');
+                    if (form.checkValidity()) {
+                        showLoading();
+                        uploadToSheet().then(() => {
+                            // Handle successful upload if needed
+                        }).catch(error => {
+                            console.error('Error uploading to sheet:', error);
+                        });
+                    } else {
+                        form.reportValidity();
+                    }
+                }
+
+                async function uploadToSheet() {
+                    // Implement the logic to upload form data to the sheet
+                    // This is a placeholder function and should be replaced with actual implementation
+                    return new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            resolve();
+                        }, 1000); // Simulate a delay for the upload
+                    });
+                }
+
+                function showLoading() {
+                    document.getElementById('loading').style.display = 'block';
+                    document.getElementById('overlay').style.display = 'block';
+                    document.getElementById('overlay').classList.add('show');
+
+                    setTimeout(function() {
+                        document.getElementById('loading').style.display = 'none';
+                        document.getElementById('success').style.display = 'block';
+
+                        setTimeout(function() {
+                            document.getElementById('success').style.display = 'none';
+                            document.getElementById('overlay').classList.remove('show');
+                            document.getElementById('overlay').style.display = 'none';
+                            document.getElementById('discountCombos').style.display = 'none'; // Hide the special discount section
+                        }, 2000); // Display the success icon for 2 seconds
+                    }, 2000); // Simulate loading time of 2 seconds
+                }
+
+                document.getElementById('checkout-form').addEventListener('submit', validateForm);
+            </script>
+        </form>
+        
+    </section>
+    <script src="js/checkout.js"></script>
+    <script src="js/products.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

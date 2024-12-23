@@ -114,7 +114,7 @@
 
 
 
-#checkout-section body {
+#checkout body {
     font-family: 'Fira Code', monospace;
     background-color: #f8f9fa;
     margin: 0;
@@ -122,7 +122,7 @@
     box-sizing: border-box;
 }
 
-#checkout-section .navbar {
+#checkout .navbar {
     background-color: #343a40;
     padding: 1rem;
 }
@@ -136,92 +136,113 @@
     scrollbar-width: none;  /* Firefox */
 }
 
-#checkout-section .navbar-brand img {
+#checkout .navbar-brand img {
     height: 2.5rem;
 }
 
-#checkout-section .nav-link {
+#checkout .nav-link {
     color: #ffffff !important;
     font-weight: 700;
     font-size: 1rem;
 }
 
-#checkout-section .nav-link:hover {
+#checkout .nav-link:hover {
     color: #ffc107 !important;
 }
 
-#checkout-section .custom-nav-item {
+#checkout .custom-nav-item {
     margin-left: 1.25rem;
 }
 
-#checkout-section .marquee-container {
+#checkout .marquee-container {
     background-color: #ffc107;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
 }
 
-#checkout-section .marquee-text {
+#checkout .marquee-text {
     color: #343a40;
     font-weight: 700;
     font-size: 1rem;
 }
 
-#checkout-section .checkout-form {
+#checkout .checkout-form {
     background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 0.625rem;
-    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
-    max-width: 100%;
-    margin: 0 auto;
+    height: 86vh;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    scrollbar-width: thin;
+    padding: 1.5rem;
 }
 
-#checkout-section .form-label {
+#checkout .billing-details , .order-summary{
+    max-height: 400px;
+    overflow: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+
+#checkout .form-label {
     font-weight: 700;
     font-size: 1rem;
 }
 
-#checkout-section .btn-primary {
+#checkout .btn-primary {
     background-color: #343a40;
     border: none;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
 }
 
-#checkout-section .btn-primary:hover {
+#checkout .btn-primary:hover {
     background-color: #ffc107;
     color: #343a40;
 }
 
 @media (max-width: 768px) {
-    #checkout-section .navbar-brand img {
+    #checkout .checkout-form {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+    
+
+    #checkout .checkout-form {
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    #checkout .billing-details ,.order-summary{
+        min-height: max-content;
+    }
+
+    #checkout .navbar-brand img {
         height: 2rem;
     }
 
-    #checkout-section .nav-link {
+    #checkout .nav-link {
         font-size: 0.875rem;
     }
 
-    #checkout-section .custom-nav-item {
+    #checkout .custom-nav-item {
         margin-left: 1rem;
     }
 
-    #checkout-section .marquee-container {
+    #checkout .marquee-container {
         padding: 0.25rem 0.5rem;
     }
 
-    #checkout-section .marquee-text {
+    #checkout .marquee-text {
         font-size: 0.875rem;
     }
 
-    #checkout-section .checkout-form {
-        padding: 1.5rem;
-    }
-
-    #checkout-section .form-label {
+    #checkout .form-label {
         font-size: 0.875rem;
     }
 
-    #checkout-section .btn-primary {
+    #checkout .btn-primary {
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
     }

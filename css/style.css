@@ -70,15 +70,14 @@ pre {
 
 .section:nth-child(2) { background-color: #FFF6E3; }
 .section:nth-child(3) { background-color: #ded7fb; }
-.section:nth-child(4) { background-color: #BFECFF; }
-.section:nth-child(5) { background-color: #FFCCEA; }
-
+.section:nth-child(4) { background-color: #eec1e6; }
+.section:nth-child(5) { background-color: #fbd771; }
 
 
 .nav-item.custom-nav-item:nth-child(1) { background-color: #FFF6E3; border-radius: 10px 10px 0 0; max-width: 100px; }
 .nav-item.custom-nav-item:nth-child(2) { background-color: #ded7fb; border-radius: 10px 10px 0 0; max-width: 100px; }
-.nav-item.custom-nav-item:nth-child(3) { background-color: #BFECFF; border-radius: 10px 10px 0 0; max-width: 100px; }
-.nav-item.custom-nav-item:nth-child(4) { background-color: #FFCCEA; border-radius: 10px 10px 0 0; max-width: 100px; }
+.nav-item.custom-nav-item:nth-child(3) { background-color: #eec1e6; border-radius: 10px 10px 0 0; max-width: 100px; }
+.nav-item.custom-nav-item:nth-child(4) { background-color: #fbd771; border-radius: 10px 10px 0 0; max-width: 100px; }
 
 
 .section{
@@ -90,7 +89,7 @@ pre {
     overflow: auto;
     overflow-x: hidden;
     scrollbar-width: thin;
-    padding:10px
+    padding:10px;
 }
 
 
@@ -113,14 +112,14 @@ pre {
   }
 
 .logo .toupi {
-    font-size: 8rem; /* Chữ rất to */
-    font-family: 'Pacifico', cursive; /* Font kiểu mềm mại */
+    font-size: 8rem; 
+    font-family: 'Pacifico', cursive;
     color: #f295da;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo .bead-bake {
-    font-size: 4rem; /* Chữ nhỏ hơn */
+    font-size: 4rem; 
     font-family: 'Pacifico', cursive;
     color: #6981f3;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -228,7 +227,10 @@ pre {
     opacity: 0.8;
 }
 @media (max-width: 850px) {
-
+    .section{
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
     body, .hero h1, .hero .btn, footer, #team-introduction h2, #products h2, #team-introduction ul li, #products ul li, #team-introduction .section-title h3, #products .section-title h3, #team-introduction .section-title p, #team-introduction .section-title ul, #products .section-title p, #products .section-title ul {
         font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
     }
@@ -254,10 +256,6 @@ pre {
 
     .navbar .container {
         margin-top: -1.5vh;
-    }
-
-    .navbar-logo {
-        margin-top: -50px;
     }
 
     .navbar-nav {

@@ -167,6 +167,7 @@ async function createProductCard(product, index) {
     const colors = text.split("\n").map(line => line.trim()).filter(color => color);
     const selectElement = document.createElement("select");
     selectElement.classList.add("form-select", "mb-3");
+    selectElement.id = "product-color";
     selectElement.setAttribute("aria-label", "Select color");
     selectElement.innerHTML = colors.map(color => `<option value="${color}">${color}</option>`).join("");
 

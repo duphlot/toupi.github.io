@@ -51,10 +51,11 @@ document.getElementById('product-list').addEventListener('click', function (even
         const button = event.target;
         const productStyle = button.closest('.product-category').classList.contains('cookies');
         const productCard = button.closest('.card');
-        const productName = productCard.querySelector('.card-title').textContent.trim();
+        let productName = productCard.querySelector('.card-title').textContent.trim();
         const productPrice = productCard.querySelector('.btn-primary').textContent;
         const productImage = productCard.querySelector('img').getAttribute('src');
-
+        const productColor =  productCard.querySelector('#product-color').value;
+        productName = `${productName} - ${productColor}`;
         console.log(`Adding to cart: ${productName}, Price: ${productPrice}, Style: ${productStyle}, Image: ${productImage}`);
 
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
