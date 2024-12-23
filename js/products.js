@@ -11,6 +11,7 @@ document.querySelectorAll('#product-filters button').forEach(button => {
                 product.style.display = 'block';
             }
             else if (category === 'bracelets' && product.classList.contains('bracelets')) {
+                product.style.display = 'none';
                 product.style.display = 'block';
             }
             else {
@@ -23,27 +24,11 @@ document.querySelectorAll('#product-filters button').forEach(button => {
         this.classList.add('active');
     });
 });
+
 document.addEventListener('DOMContentLoaded', function() {
-    const defaultCategory = 'bracelets';
-    document.querySelectorAll('.product-category').forEach(product => {
-        if (product.classList.contains(defaultCategory)) {
-            product.style.display = 'block';
-        } else {
-            product.style.display = 'none';
-        }
-    });
-    document.querySelectorAll('#product-filters button').forEach(button => {
-        if (button.textContent.toLowerCase() === defaultCategory) {
-            button.classList.add('active');
-        } else {
-            button.classList.remove('active');
-        }
-    });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    updateCartCount();
-    displayCartProducts();
+    const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+    updatetoupiCount();
+    displaytoupiProducts();
 });
 
 document.getElementById('product-list').addEventListener('click', function (event) {
@@ -58,49 +43,49 @@ document.getElementById('product-list').addEventListener('click', function (even
         productName = `${productName} - ${productColor}`;
         console.log(`Adding to cart: ${productName}, Price: ${productPrice}, Style: ${productStyle}, Image: ${productImage}`);
 
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const existingProduct = cart.find(product => product.name === productName);
+        let toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+        const existingProduct = toupi.find(product => product.name === productName);
         if (existingProduct) {
             existingProduct.quantity += 1;
         } else {
             const product = { name: productName, price: productPrice, style: productStyle, image: productImage, quantity: 1 };
-            cart.push(product);
+            toupi.push(product);
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartUI();
+        localStorage.setItem('toupi', JSON.stringify(toupi));
+        updatetoupiUI();
     }
 });
 
 
-function removeFromCart(productName) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const productIndex = cart.findIndex(product => product.name === productName);
-    cart.splice(productIndex, 1); 
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartUI();
+function removeFromtoupi(productName) {
+    let toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+    const productIndex = toupi.findIndex(product => product.name === productName);
+    toupi.splice(productIndex, 1); 
+    localStorage.setItem('toupi', JSON.stringify(toupi));
+    updatetoupiUI();
 }
 
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
+function updatetoupiCount() {
+    const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+    const totalQuantity = toupi.reduce((total, product) => total + product.quantity, 0);
     document.getElementById('cartCount').textContent = totalQuantity;
 }
 
-function updateCartUI() {
-    updateCartCount();
-    displayCartProducts();
+function updatetoupiUI() {
+    updatetoupiCount();
+    displaytoupiProducts();
 }
 
-function displayCartProducts() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartContainer = document.getElementById('cartContainer');
-    cartContainer.innerHTML = '';
+function displaytoupiProducts() {
+    const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+    const toupiContainer = document.getElementById('cartContainer');
+    toupiContainer.innerHTML = '';
 
-    if (cart.length === 0) {
-        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+    if (toupi.length === 0) {
+        toupiContainer.innerHTML = '<p>Your cart is empty.</p>';
     } else {
-        cart.forEach(item => {
+        toupi.forEach(item => {
             const itemDiv = document.createElement('div');
             itemDiv.classList.add('cart-product', 'd-flex', 'justify-content-between', 'align-items-center', 'mb-3');
             itemDiv.innerHTML = `
@@ -119,13 +104,13 @@ function displayCartProducts() {
                 </div>
                 <span class="trash-icon ms-3" onclick="removeFromCart('${item.name}')">&#128465;</span>
             `;
-            cartContainer.appendChild(itemDiv);
+            toupiContainer.appendChild(itemDiv);
         });
-        addCartButtonsEvents();
+        addtoupiButtonsEvents();
     }
 }
 
-function addCartButtonsEvents() {
+function addtoupiButtonsEvents() {
     document.querySelectorAll('.removeFromCartBtn').forEach(button => {
         button.addEventListener('click', function() {
             const productCard = this.closest('.cart-product');
@@ -138,11 +123,11 @@ function addCartButtonsEvents() {
         button.addEventListener('click', function() {
             const productCard = this.closest('.cart-product');
             const productName = productCard.querySelector('.cart-product-title').textContent;
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const product = cart.find(product => product.name === productName);
+            let toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+            const product = toupi.find(product => product.name === productName);
             if (product) product.quantity += 1;
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartUI();
+            localStorage.setItem('toupi', JSON.stringify(toupi));
+            updatetoupiUI();
         });
     });
 
@@ -150,17 +135,17 @@ function addCartButtonsEvents() {
         button.addEventListener('click', function() {
             const productCard = this.closest('.cart-product');
             const productName = productCard.querySelector('.cart-product-title').textContent;
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const productIndex = cart.findIndex(product => product.name === productName);
+            let toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+            const productIndex = toupi.findIndex(product => product.name === productName);
             if (productIndex !== -1) {
-                if (cart[productIndex].quantity > 1) {
-                    cart[productIndex].quantity -= 1; 
+                if (toupi[productIndex].quantity > 1) {
+                    toupi[productIndex].quantity -= 1; 
                 } else {
-                    cart.splice(productIndex, 1); 
+                    toupi.splice(productIndex, 1); 
                 }
             }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartUI();
+            localStorage.setItem('toupi', JSON.stringify(toupi));
+            updatetoupiUI();
         });
     });
 }

@@ -1,21 +1,21 @@
 function adjustQuantity(action, index) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let quantity = cart[index].quantity || 1;
+    const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+    let quantity = toupi[index].quantity || 1;
     if (action === 'increase') {
         quantity++;
     } else if (action === 'decrease' && quantity > 1) {
         quantity--;
     }
-    cart[index].quantity = quantity; 
-    localStorage.setItem('cart', JSON.stringify(cart)); 
-    renderCart(); 
+    toupi[index].quantity = quantity; 
+    localStorage.setItem('toupi', JSON.stringify(toupi)); 
+    rendertoupi(); 
 }
 
 function updateSubtotal() {
     let subtotal = 0;
-    const cartItems = document.querySelectorAll('.cart-item');
+    const toupiItems = document.querySelectorAll('.cart-item');
     
-    cartItems.forEach(item => {
+    toupiItems.forEach(item => {
         const quantity = parseInt(item.querySelector('.quantity').textContent);
         const price = parseFloat(item.querySelector('.item-total-price').textContent.replace(' VND', '').replace(',', ''));
         subtotal += quantity * price;
@@ -35,9 +35,9 @@ function toggleOtherAddress(select) {
     }
 }
 
-function renderCart() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartItemsContainer = document.getElementById('cartItems');
+function rendertoupi() {
+    const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+    const toupiItemsContainer = document.getElementById('cartItems');
     const subtotalElement = document.getElementById('subtotal');
     const discountCombosContainer = document.getElementById('discountCombos');
 
@@ -46,7 +46,7 @@ function renderCart() {
     let braceletsCount = 0;
 
     // Tính toán lại tổng tiền và số lượng của từng loại
-    cart.forEach(item => {
+    toupi.forEach(item => {
         const quantity = item.quantity || 1;
         const itemPrice = parseInt(item.price.replace(/\D/g, ''));
         subtotal += itemPrice * quantity;
@@ -76,8 +76,8 @@ function renderCart() {
     const total = subtotal - discount;
 
     // Cập nhật lại HTML giỏ hàng
-    cartItemsContainer.innerHTML = '';
-    cart.forEach((item, index) => {
+    toupiItemsContainer.innerHTML = '';
+    toupi.forEach((item, index) => {
         const quantity = item.quantity || 1;
         const itemPrice = parseInt(item.price.replace(/\D/g, ''));
         const totalItemPrice = itemPrice * quantity;
@@ -99,7 +99,7 @@ function renderCart() {
         </div>
         <p class="item-total-price">${totalItemPrice} VND</p>
         `;
-        cartItemsContainer.appendChild(itemDiv);
+        toupiItemsContainer.appendChild(itemDiv);
     });
     discountCombosContainer.innerHTML = '';
     discountCombos.forEach(combo => {
@@ -113,7 +113,7 @@ function renderCart() {
 
 // Thêm sự kiện submit khi trang được tải lần đầu
 window.addEventListener('DOMContentLoaded', () => {
-    renderCart();
+    rendertoupi();
 
     const checkoutForm = document.getElementById('checkout-form');
     checkoutForm.addEventListener('submit', function(event) {
@@ -128,11 +128,11 @@ window.addEventListener('DOMContentLoaded', () => {
         const otheraddress = document.getElementById('other-address').value;
 
         // Lấy lại giỏ hàng và tính toán subtotal
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
         let subtotal = 0;
         let cookiesCount = 0;
         let braceletsCount = 0;
-        cart.forEach(item => {
+        toupi.forEach(item => {
             const quantity = item.quantity || 1;
             const itemPrice = parseInt(item.price.replace(/\D/g, ''));
             subtotal += itemPrice * quantity;
@@ -158,7 +158,7 @@ window.addEventListener('DOMContentLoaded', () => {
             address: address + ' - ' + otheraddress,
             city: day + ' - ' + time,
             zip: zip,
-            cartItems: cart.map((item, index) => `${item.name} - ${item.quantity}`).join(', '),
+            toupiItems: toupi.map((item, index) => `${item.name} - ${item.quantity}`).join(', '),
             subtotal: subtotal
         };
 
@@ -174,7 +174,7 @@ window.addEventListener('DOMContentLoaded', () => {
         .then(() => {
             console.log('Order submitted successfully');
 
-            localStorage.removeItem('cart');
+            localStorage.removeItem('toupi');
 
             document.getElementById('cartItems').innerHTML = '';
             document.getElementById('subtotal').textContent = '0 VND';
@@ -190,8 +190,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Hàm removeItem dùng để xóa mục khỏi giỏ hàng
 function removeItem(index) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.splice(index, 1); // Xóa mục khỏi giỏ hàng
-    localStorage.setItem('cart', JSON.stringify(cart)); // Cập nhật lại localStorage
-    renderCart(); // Gọi lại renderCart để cập nhật giao diện
+    const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+    toupi.splice(index, 1); // Xóa mục khỏi giỏ hàng
+    localStorage.setItem('toupi', JSON.stringify(toupi)); // Cập nhật lại localStorage
+    rendertoupi(); // Gọi lại rendertoupi để cập nhật giao diện
 }

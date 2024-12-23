@@ -193,7 +193,7 @@ async function createProductCard(product, index) {
     cardDiv.appendChild(carouselDiv);
     cardDiv.appendChild(cardBody);
     colDiv.appendChild(cardDiv);
-
+    
     return colDiv;
 }
 
@@ -207,6 +207,7 @@ async function initProductList() {
     }));
 
     productListContainer.appendChild(fragment);
+    document.getElementById('braceletsBtn').click();
 }
 
 // Custom Gallery
@@ -256,4 +257,5 @@ document.addEventListener("DOMContentLoaded", () => {
     initCarousel();
     initProductList();
     initCustomGallery();
+    
 });
