@@ -74,7 +74,7 @@ async function showdetailsSection(sectionId, productId, productPrice, productNam
         console.error('Error fetching product details:', error);
         productDetailsText.innerHTML = `
             <h5 id="product-name">${productName}</h5>
-            <p id="product-description">Mô tả sản phẩm sẽ được cập nhật.</p>
+            <p id="product-description" class = "description">Mô tả sản phẩm sẽ được cập nhật.</p>
             <p id="product-price">Price: ${productPrice} VND</p>
         `;
     }
@@ -93,7 +93,7 @@ async function showdetailsSection(sectionId, productId, productPrice, productNam
     } catch (error) {
         console.error('Error fetching product colors:', error);
     }
-    
+
     const soldOutButton = document.createElement('a');
     soldOutButton.href = "#";
     soldOutButton.classList.add("btn", "btn-primary", productStatus === "on" ? "addToCartBtn" : "soldOut");

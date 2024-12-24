@@ -87,3 +87,27 @@
     max-width: 500px;
     margin: auto;
 }
+
+
+
+@media (max-width: 768px) {
+    #product-details {
+        padding: 20px 10px;
+        padding-bottom: 0;
+    }
+    #product-details h5#product-name {
+        font-size: 24px;
+    }
+    #product-details p#product-description {
+        font-size: 12px;
+    }
+
+    #product-details .addToCartBtn, 
+    #product-details .soldOut {
+        font-size: 14px;
+    }
+    .product-details-text {
+        margin-top: 20px;
+    }
+    
+}
