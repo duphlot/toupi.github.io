@@ -50,7 +50,7 @@ document.getElementById('product-details').addEventListener('click', function (e
         const productContainer = button.closest('#product-details');
         const productName = productContainer.querySelector('#product-name').textContent.trim();
         const productDescription = productContainer.querySelector('#product-description').textContent.trim();
-        const productPrice = button.textContent.trim();
+        const productPrice = productContainer.querySelector('#product-price').textContent.split(':')[1].trim();
         const productImage = productContainer.querySelector('.carousel-inner .active img').getAttribute('src'); // Lấy hình ảnh hiện tại trong carousel
         const productColorSelect = productContainer.querySelector('select'); 
         const productColor = productColorSelect ? productColorSelect.value : 'Default Color';

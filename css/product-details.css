@@ -1,16 +1,15 @@
-#product-details {
-    padding: 30px 20px;
+#product-details{
+    padding: 20px 20px;
     background-color: #fdfdfd;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    font-family: 'Arial', sans-serif;
 }
 
 #product-details .carousel-inner {
     border: 2px solid #ccc;
     background-color: #fff;
-    border-radius: 30px;
+    border-radius: 20px;
     overflow: hidden;
 }
 
@@ -60,7 +59,7 @@
     font-size: 16px;
     margin: 0px 5px;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 20px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -92,9 +91,11 @@
 
 @media (max-width: 768px) {
     #product-details {
-        padding: 20px 10px;
+        padding: 10px 10px;
         padding-bottom: 0;
+        box-shadow: none;
     }
+
     #product-details h5#product-name {
         font-size: 24px;
     }
