@@ -158,10 +158,10 @@ window.addEventListener('DOMContentLoaded', () => {
             address: address + ' - ' + otheraddress,
             city: day + ' - ' + time,
             zip: zip,
-            toupiItems: toupi.map((item, index) => `${item.name} - ${item.quantity}`).join(', '),
+            cartItems: toupi.map((item, index) => `${item.name} - ${item.quantity}`).join(', '),
             subtotal: subtotal
         };
-
+        console.log('Order data:', orderData);
         const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbxOxB3-Zdt8GKdcjMBs1A2IoPEClKI4vuCgJol8P6c8pKt9kfo7FYVCKiNk92RjhI4x0Q/exec';
         fetch(googleAppsScriptUrl, {
             method: 'POST',
