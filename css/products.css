@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     transition: all 0.2s ease-in-out;
-    font-weight: bold; /* Added to make the text bold */
+    font-weight: bold; 
 }
 
 .form-select:focus {
@@ -25,6 +25,47 @@
 
 
 
+/* Hiệu ứng phát sáng nhẹ */
+.cart-highlight {
+    animation: glow 0.5s ease-in-out;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 0px rgba(255, 223, 0, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 223, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 0px rgba(255, 223, 0, 0.8);
+    }
+}
+
+/* Thiết kế thông báo (toast) */
+.custom-toast {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    background-color: #444;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+    font-size: 16px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1000;
+}
+
+.custom-toast.hide {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+
+
+
 
 #products .card {
     border-radius: 30px;
@@ -32,16 +73,18 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
 }
-#products .carousel-inner {
+#product-grid-lists .carousel-inner {
     border-radius: 30px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-#products .carousel{
+#product-grid-lists .carousel{
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
+
+
 
 #products .card-body {
     color: #000000;

@@ -1,0 +1,89 @@
+#product-details {
+    padding: 30px 20px;
+    background-color: #fdfdfd;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+#product-details .carousel-inner {
+    border: 2px solid #ccc;
+    background-color: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+#product-details .carousel-inner img {
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#product-details .carousel-inner img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+
+#product-details h5#product-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+#product-details p#product-description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#product-details p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff5722;
+    margin-bottom: 15px;
+}
+
+
+#product-details .addToCartBtn, 
+#product-details .soldOut {
+    background-color: #ddd7fc;
+    border: none;
+    color: #000000;
+    border: 1px solid #333;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    margin: 0px 5px;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#product-details .addToCartBtn:hover {
+    background-color:  #e8aaed;
+    transform: scale(1.05);
+}
+
+#product-details .soldOut {
+    background-color: #d32f2f;
+}
+
+#product-details .soldOut:hover {
+    background-color: #b71c1c;
+    transform: scale(1.05);
+}
+
+.product-details-text {
+    text-align: left;
+    background-color: #fff6e3;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+}

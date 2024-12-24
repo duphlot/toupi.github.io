@@ -109,6 +109,7 @@ async function createProductCard(product, index) {
 
     const colDiv = document.createElement("div");
     colDiv.classList.add("col", "product-category", product.filter);
+    colDiv.id = product.folder;
 
     const cardDiv = document.createElement("div");
     cardDiv.classList.add("card", "h-100");
@@ -120,7 +121,7 @@ async function createProductCard(product, index) {
 
     const carouselInner = document.createElement("div");
     carouselInner.classList.add("carousel-inner");
-
+    carouselInner.setAttribute("onclick", `showdetailsSection('product-details','${product.folder}','${product.price}', '${product.name}', '${product.filter}', '${product.status}') `);
     imageUrls.forEach((imageUrl, idx) => {
         const carouselItem = document.createElement("div");
         carouselItem.classList.add("carousel-item");

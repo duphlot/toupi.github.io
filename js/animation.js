@@ -48,3 +48,25 @@ document.querySelectorAll('.carousel').forEach(function(carousel) {
         }
     }
 });
+
+
+document.getElementById('product-details').addEventListener('click', function(event) {
+    if (event.target.classList.contains('addToCartBtn')) {
+        const cart = document.querySelector('#cartBtn');
+
+        cart.classList.add('cart-highlight');
+        setTimeout(() => {
+            cart.classList.remove('cart-highlight');
+        }, 1000);
+
+        const toast = document.createElement('div');
+        toast.textContent = "Đã thêm sản phẩm vào giỏ hàng!";
+        toast.className = 'custom-toast';
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.classList.add('hide');
+            toast.addEventListener('transitionend', () => toast.remove());
+        }, 1000);
+    }
+});

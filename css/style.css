@@ -72,6 +72,7 @@ pre {
 .section:nth-child(3) { background-color: #ded7fb; }
 .section:nth-child(4) { background-color: #eec1e6; }
 .section:nth-child(5) { background-color: #fbd771; }
+.section:nth-child(6) { background-color: #ded7fb; }
 
 
 .nav-item.custom-nav-item:nth-child(1) { background-color: #FFF6E3; border-radius: 10px 10px 0 0; max-width: 100px; }
@@ -90,7 +91,6 @@ pre {
     overflow-x: hidden;
     scrollbar-width: thin;
     padding:10px;
-    padding-bottom: 100px;
 }
 
 
@@ -402,5 +402,8 @@ pre {
 
     .navbar-toggler {
         display: none;
+    }
+    .section{
+        padding-bottom: 100px;
     }
 }

@@ -1,32 +1,18 @@
-document.querySelectorAll('#product-filters button').forEach(button => {
-    button.addEventListener('click', function() {
-        const category = this.textContent.toLowerCase();
-        document.querySelectorAll('.product-category').forEach(product => {
-            if (category === 'key ring' && product.classList.contains('keyring')) {
-                product.style.display = 'none';
-                product.style.display = 'block';
-            }
-            else if (category === 'cookies' && product.classList.contains('cookies')) {
-                product.style.display = 'none';
-                product.style.display = 'block';
-            }
-            else if (category === 'bracelets' && product.classList.contains('bracelets')) {
-                product.style.display = 'none';
-                product.style.display = 'block';
-            }
-            else {
-                product.style.display = 'none';
-            }
-        });
-        document.querySelectorAll('#product-filters button').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        this.classList.add('active');
+function showfilter(category) {
+    document.querySelectorAll('.product-category').forEach(product => {
+        if (product.classList.contains(category)) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
     });
-});
+    document.querySelectorAll('#product-filters button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`#product-filters button[onclick="showProductGrid(); showfilter('${category}')"]`).classList.add('active');
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-    const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
     updatetoupiCount();
     displaytoupiProducts();
 });
@@ -56,6 +42,46 @@ document.getElementById('product-list').addEventListener('click', function (even
         updatetoupiUI();
     }
 });
+
+document.getElementById('product-details').addEventListener('click', function (event) {
+    if (event.target.classList.contains('addToCartBtn')) {
+        const button = event.target;
+
+        const productContainer = button.closest('#product-details');
+        const productName = productContainer.querySelector('#product-name').textContent.trim();
+        const productDescription = productContainer.querySelector('#product-description').textContent.trim();
+        const productPrice = button.textContent.trim();
+        const productImage = productContainer.querySelector('.carousel-inner .active img').getAttribute('src'); // Lấy hình ảnh hiện tại trong carousel
+        const productColorSelect = productContainer.querySelector('select'); 
+        const productColor = productColorSelect ? productColorSelect.value : 'Default Color';
+
+        const finalProductName = `${productName} - ${productColor}`;
+
+        console.log(`Adding to cart: ${finalProductName}, Description: ${productDescription}, Price: ${productPrice}, Image: ${productImage}`);
+
+        let toupi = JSON.parse(localStorage.getItem('toupi')) || [];
+        const existingProduct = toupi.find(product => product.name === finalProductName);
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            const product = {
+                name: finalProductName,
+                description: productDescription,
+                price: productPrice,
+                image: productImage,
+                quantity: 1
+            };
+            toupi.push(product);
+        }
+
+        localStorage.setItem('toupi', JSON.stringify(toupi));
+
+        if (typeof updatetoupiUI === 'function') {
+            updatetoupiUI();
+        }
+    }
+});
+
 
 
 function removeFromtoupi(productName) {
@@ -102,7 +128,7 @@ function displaytoupiProducts() {
                         </div>
                     </div>
                 </div>
-                <span class="trash-icon ms-3" onclick="removeFromCart('${item.name}')">&#128465;</span>
+                <span class="trash-icon ms-3" onclick="removeFromtoupi('${item.name}')">&#128465;</span>
             `;
             toupiContainer.appendChild(itemDiv);
         });
