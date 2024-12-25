@@ -21,7 +21,7 @@
     z-index: 2;
 }
 .stripe:nth-child(odd) {
-    background-color: #667ff1;
+    background-color: #B4E4FF;
 }
 
 .draw-wave {
@@ -45,7 +45,7 @@
 .wave {
     width: 20vh;
     height: 20vh;
-    background-color: #667ff1;
+    background-color: #B4E4FF;
     border-radius: 50%;
     margin: 0 -2vh;
     position: relative;

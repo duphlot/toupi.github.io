@@ -1,5 +1,5 @@
 #home .new-product-container{
-    background-color: #6981f3;
+    background-color: #B4E4FF;
     scrollbar-width: none;
     min-height: max-content;
     border-radius: 20px;
@@ -28,26 +28,25 @@
     width: 100%;
     height: 100% width;
     border-bottom: 0.2vh solid #333; 
-    border-radius: 2vh;
-    padding:8px;
+    border-radius: 3vh;
+    padding:10px;
 }
 
 #home .card{
-    border-radius: 2vh;
+    border-radius: 3vh;
     margin-top: 2vh;
     margin-bottom: -10px;
-    border: 0.1vh solid #333;
 }
 
 #home .new-product-tag {
-    font-size: 2.5vh;
+    font-size: 3.5vh;
     margin-left: 5vh;
-    border-radius: 2vh 2vh 0 0;
-    width: 25vh;
+    border-radius: 3vh 3vh 0 0;
+    width: 30svh;
     text-align: center;
     display: inline-block;
     padding: 2vh;
-    background-color: #6981f3;
+    background-color: #B4E4FF;
     color: white;
 }
 

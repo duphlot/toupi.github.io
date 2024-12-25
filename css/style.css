@@ -181,19 +181,24 @@ pre {
 
 .logo {
     text-align: center;
-    animation: float 3s infinite ease-in-out;
+}
+
+
+@font-face{
+    font-family: 'Brydan Write';
+    src: url('../font/Brydan Write.ttf') format('truetype');
 }
 
 .logo .toupi {
     font-size: 10vw;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Brydan Write', sans-serif;
     color: #f295da;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo .bead-bake {
     font-size: 6vw;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Brydan Write', sans-serif;
     color: #6981f3;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     animation: shake 2s infinite alternate;
@@ -300,7 +305,7 @@ pre {
 
 @media (max-width: 1000px) {
     body{
-        padding: 7px;
+        padding: 8px;
         padding-top: 0;
     }
 
