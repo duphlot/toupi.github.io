@@ -30,7 +30,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
-        <div class = "container">
+        <div class="container-nav">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <a class="navbar-brand">
@@ -38,16 +38,14 @@
                     </a>
                     <a class="nav-link">
                         <div class="marquee-container d-flex justify-content-between align-items-center">
-                            <marquee class="marquee-text">Welcome to the toupi.bnb! ˚✧‧₊This grocery store is banking only˚⟡౨ৎ</marquee>
+                            <marquee class="marquee-text" behavior="scroll" direction="left" scrollamount="5" loop="infinite">Welcome to the toupi.bnb! ˚✧‧₊ Follow us on Instagram @toupi.bnb for the latest product updates and exclusive news! ˚⟡౨ৎ</marquee>
                         </div>
                     </a>
                 </ul>
             </div>
-        </div>
-        <div class="container navigate" style="display: flex; justify-content: space-between;">
             <div class="collapse navbar-collapse under" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item custom-nav-item">
+                    <li class="first nav-item custom-nav-item">
                         <a class="nav-link" href="#" onclick="showSection('home')">HOME</a>
                     </li>
                     <li class="nav-item custom-nav-item">
@@ -56,12 +54,12 @@
                     <li class="nav-item custom-nav-item">
                         <a class="nav-link" href="#" onclick="showSection('custom')">CUSTOM</a>
                     </li>
-                    <li class="nav-item custom-nav-item">
+                    <li class="last nav-item custom-nav-item">
                         <a class="nav-link" href="#" onclick="showSection('feedback')">FEEDBACK</a>
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>        
     </nav>
 
     <!-- Content Sections -->
