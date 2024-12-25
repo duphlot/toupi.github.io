@@ -39,11 +39,11 @@
 }
 
 #home .new-product-tag {
-    font-size: 3.5vh;
-    margin-left: 5vh;
+    font-size: 25px;
+    margin-left: 20px;
     border-radius: 3vh 3vh 0 0;
-    width: 30vh;
-    height: 7vh;
+    width: 200px;
+    height: 50px;
     text-align: center;
     display: inline-block;
     padding: 2vh;
