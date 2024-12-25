@@ -12,8 +12,30 @@ body {
     font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
     font-size: 16px;
     line-height: 1.5;
+    padding: 7px;
+    padding-top: 0;
+    width:100vw;
+    height: 100svh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
+
+.section {
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    overflow: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    padding: 10px;
+}
+
+@media (min-width: 1000px) {
+    .navigate{
+        margin-right: -17px;
+    }
+}
+
 
 h1, h2, a, p, code, pre, .navbar-nav .nav-item .nav-link, #team-introduction h2, #products h2, #team-introduction .section-title h3, #products .section-title h3, #team-introduction .section-title p, #products .section-title p {
     font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
@@ -73,16 +95,6 @@ pre {
 .nav-item.custom-nav-item:nth-child(3) { background-color: #eec1e6; border-radius: 10px 10px 0 0; max-width: 100px; }
 .nav-item.custom-nav-item:nth-child(4) { background-color: #fbd771; border-radius: 10px 10px 0 0; max-width: 100px; }
 
-.section {
-    height: 86vh;
-    border-radius: 20px;
-    border-top-right-radius: 0;
-    margin: 0 10px;
-    overflow: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    padding: 10px;
-}
 
 .text-container {
     text-align: left;
@@ -314,7 +326,7 @@ pre {
     .navbar {
         flex-direction: column;
         justify-content: space-between;
-        margin: 0 -8px;
+        margin-top: 10px;
     }
 
     .navbar .container {
