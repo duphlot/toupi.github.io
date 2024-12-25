@@ -12,7 +12,7 @@ body {
     font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
     font-size: 16px;
     line-height: 1.5;
-    padding: 7px;
+    padding: 0.8vw;
     padding-top: 0;
     width:100vw;
     height: 100svh;
@@ -116,10 +116,16 @@ pre {
 .nav-item.custom-nav-item:nth-child(3) { background-color: #eec1e6; border-radius: 10px 10px 0 0; max-width: 100px; }
 .nav-item.custom-nav-item:nth-child(4) { background-color: #fbd771; border-radius: 10px 10px 0 0; max-width: 100px; }
 
+.text-container h2{
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
 
 .text-container {
+    font-size: 1.8vw;
     text-align: left;
-    font-size: 1.6rem;
     font-family: 'Poppins', sans-serif;
     line-height: 1.8;
     color: #333;
@@ -161,6 +167,7 @@ pre {
 .text-container span {
     display: inline-block;
     font-weight: bold;
+    font-size: 2vw;
     color: #ff69b4;
     font-family: 'Comic Sans MS', cursive;
     animation: bounce 2s infinite alternate;
@@ -178,14 +185,14 @@ pre {
 }
 
 .logo .toupi {
-    font-size: 8rem;
+    font-size: 10vw;
     font-family: 'Pacifico', cursive;
     color: #f295da;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo .bead-bake {
-    font-size: 4rem;
+    font-size: 6vw;
     font-family: 'Pacifico', cursive;
     color: #6981f3;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -292,6 +299,15 @@ pre {
 
 
 @media (max-width: 1000px) {
+    .logo .toupi {
+        font-size: 8rem;
+    }
+
+    .logo .bead-bake {
+        font-size: 4rem;
+        margin-bottom: 50px;
+    }
+
     .text-container {
         font-size: 1.2rem;
         padding: 15px;
