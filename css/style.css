@@ -42,6 +42,10 @@ body {
 }
 
 @media (min-width: 1000px) {
+    .navbar-brand{
+        margin-top: 8px;
+    }
+    
     .navbar-nav .nav-item {
         margin: 0 10px;
         margin-right: 0;
@@ -244,7 +248,7 @@ pre {
 
 .navbar {
     color: #fff;
-    margin: 20px 0 0;
+    margin: 10px 0 0;
     padding: 0;
     display: flex;
 }
