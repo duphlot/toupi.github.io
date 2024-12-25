@@ -45,9 +45,8 @@
     z-index: 1000;
     background-color: white;
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
 }
 .cart-product {
     border: 1px solid #ddd;
@@ -85,7 +84,6 @@
 }
 @media only screen and (max-width: 800px) {
     .cart-modal {
-        width: 80%;
         right: 10px;
         top: 60px;
         padding: 10px;

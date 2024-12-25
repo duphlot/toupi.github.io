@@ -12,7 +12,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
-        <div class = "container">
+        <div class="container-nav">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <a class="navbar-brand">
@@ -20,46 +20,47 @@
                     </a>
                     <a class="nav-link">
                         <div class="marquee-container d-flex justify-content-between align-items-center">
-                            <marquee class="marquee-text">Welcome to the toupi.bnb! ˚✧‧₊This grocery store is banking only˚⟡౨ৎ</marquee>
+                            <marquee class="marquee-text" behavior="scroll" direction="left" scrollamount="5" loop="infinite">Welcome to the toupi.bnb! ˚✧‧₊ Follow us on Instagram @toupi.bnb for the latest product updates and exclusive news! ˚⟡౨ৎ</marquee>
                         </div>
                     </a>
                 </ul>
             </div>
-        </div>
-        <div class="container" style="margin-right: 0;">
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse under" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item custom-nav-item">
+                    <li class="first nav-item custom-nav-item">
                         <a class="nav-link" href="index.html" onclick="showSection('home')">HOME</a>
                     </li>
                     <li class="nav-item custom-nav-item">
-                        <a class="nav-link" href="index.html" onclick="showSection('products')">PRODUCTS</a>
+                        <a class="nav-link" href="index.html" onclick="showProductGrid(); showSection('products')">PRODUCTS</a>
                     </li>
                     <li class="nav-item custom-nav-item">
                         <a class="nav-link" href="index.html" onclick="showSection('custom')">CUSTOM</a>
                     </li>
-                    <li class="nav-item custom-nav-item">
+                    <li class="last nav-item custom-nav-item">
                         <a class="nav-link" href="index.html" onclick="showSection('feedback')">FEEDBACK</a>
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>        
     </nav>
-    <section id="checkout">
+    <section id="checkout" class ="section" style="background-color:white; padding: 20px;">
         <link rel="stylesheet" href="css/checkout.css">
         <form id="checkout-form" class="checkout-form">
             <div class="row">
+                <!-- Billing Details -->
                 <div class="col-md-6 billing-details">
                     <h4 class="mb-4" style="font-family: 'Fira Code', monospace;">Billing Details</h4>
+                    <!-- Name -->
                     <div class="mb-3">
-                        <label for="billing-name" class="form-label"> What's your name? / Bạn tên dì dãy?</label>
+                        <label for="billing-name" class="form-label">What's your name? / Bạn tên dì dãy?</label>
                         <input type="text" class="form-control" id="billing-name" required>
                     </div>
+                    <!-- Facebook Profile -->
                     <div class="mb-3">
                         <label for="billing-email" class="form-label">Facebook Profile Link</label>
                         <input type="url" class="form-control" id="billing-email" required>
                     </div>
-    
+                    <!-- Address -->
                     <div class="mb-3">
                         <label for="billing-address" class="form-label">Where do you want to receive?/ Nhận hàng ở đâu</label>
                         <select class="form-control" id="billing-address" required onchange="toggleOtherAddress(this)">
@@ -68,6 +69,7 @@
                         </select>
                         <input type="text" class="form-control mt-2" id="other-address" placeholder="Nhập địa chỉ khác" style="display: none;">
                     </div>
+                    <!-- Date and Time -->
                     <div class="mb-3 d-flex flex-column flex-md-row justify-content-between">
                         <div class="me-2 mb-2 mb-md-0" style="flex: 1;">
                             <label for="delivery-day" class="form-label">Chọn ngày giao hàng</label>
@@ -82,6 +84,7 @@
                             </select>
                         </div>
                     </div>
+                    <!-- Phone -->
                     <div class="mb-3">
                         <label for="billing-number" class="form-label">Number / Xin số đi em</label>
                         <input type="text" class="form-control" id="billing-number" required>
@@ -95,96 +98,29 @@
                     <p><strong>Total after discountCombos:</strong> <span id="subtotal">0</span></p>
                 </div>
             </div>
+            <!-- Place Order -->
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-primary w-50">Place Order</button>
             </div>
-            
-            <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1049;"></div>
-            
-            <div id="loading" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1050;">
+            <!-- Overlay and Modals -->
+            <div id="overlay"></div>
+            <div id="loading">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-            <div id="success" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1050; text-align: center;">
+            <div id="success">
                 <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="10" stroke="green" stroke-width="2" />
                     <path id="checkmark" d="M6 12l4 4 8-8" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </div>
-            
-            <style>
-                /* Checkmark animation */
-                #success svg {
-                    animation: fadeIn 0.5s ease forwards;
-                }
-            
-                /* Draw checkmark animation */
-                #checkmark {
-                    stroke-dasharray: 22; /* length of the checkmark path */
-                    stroke-dashoffset: 22;
-                    animation: draw 1s ease forwards;
-                }
-            
-                /* Fade in animation for the whole SVG */
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: scale(0.9); }
-                    to { opacity: 1; transform: scale(1); }
-                }
-            
-                /* Draw checkmark animation */
-                @keyframes draw {
-                    from { stroke-dashoffset: 22; }
-                    to { stroke-dashoffset: 0; }
-                }
-            </style>
-            
-            <script>
-                function validateForm(event) {
-                    event.preventDefault();
-                    const form = document.getElementById('checkout-form');
-                    if (form.checkValidity()) {
-                        showLoading();
-                        uploadToSheet().then(() => {
-                            // Handle successful upload if needed
-                        }).catch(error => {
-                            console.error('Error uploading to sheet:', error);
-                        });
-                    } else {
-                        form.reportValidity();
-                    }
-                }
-
-                async function uploadToSheet() {
-                    // Implement the logic to upload form data to the sheet
-                    // This is a placeholder function and should be replaced with actual implementation
-                    return new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                            resolve();
-                        }, 1000); // Simulate a delay for the upload
-                    });
-                }
-
-                function showLoading() {
-                    document.getElementById('loading').style.display = 'block';
-                    document.getElementById('overlay').style.display = 'block';
-                    document.getElementById('overlay').classList.add('show');
-
-                    setTimeout(function() {
-                        document.getElementById('loading').style.display = 'none';
-                        document.getElementById('success').style.display = 'block';
-
-                        setTimeout(function() {
-                            document.getElementById('success').style.display = 'none';
-                            document.getElementById('overlay').classList.remove('show');
-                            document.getElementById('overlay').style.display = 'none';
-                            document.getElementById('discountCombos').style.display = 'none'; // Hide the special discount section
-                        }, 2000); // Display the success icon for 2 seconds
-                    }, 2000); // Simulate loading time of 2 seconds
-                }
-
-                document.getElementById('checkout-form').addEventListener('submit', validateForm);
-            </script>
+            <div id="orderCodeModal">
+                <button id="closeModal">&times;</button>
+                <h2>Your order code is:</h2>
+                <p id="orderCodeValue"></p>
+                <p class="note">Please save your order code for future reference!</p>
+            </div>
         </form>
         
     </section>

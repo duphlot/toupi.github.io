@@ -1,3 +1,4 @@
+let orderCode = 0;
 function adjustQuantity(action, index) {
     const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
     let quantity = toupi[index].quantity || 1;
@@ -45,7 +46,6 @@ function rendertoupi() {
     let cookiesCount = 0;
     let braceletsCount = 0;
 
-    // Tính toán lại tổng tiền và số lượng của từng loại
     toupi.forEach(item => {
         const quantity = item.quantity || 1;
         const itemPrice = parseInt(item.price.replace(/\D/g, ''));
@@ -75,7 +75,6 @@ function rendertoupi() {
     discountCombos.push(`Special Discount: -${discount} VND`);
     const total = subtotal - discount;
 
-    // Cập nhật lại HTML giỏ hàng
     toupiItemsContainer.innerHTML = '';
     toupi.forEach((item, index) => {
         const quantity = item.quantity || 1;
@@ -111,13 +110,65 @@ function rendertoupi() {
     subtotalElement.textContent = `${total} VND`;
 }
 
-// Thêm sự kiện submit khi trang được tải lần đầu
+function generateUniqueOrderCode() {
+    const now = new Date();
+    const year = String(now.getFullYear()).slice(-2);
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const randomValue = String(Math.floor(Math.random() * 1000)).padStart(3, '0');
+    return `${year}${month}${day}-${hours}${minutes}${seconds}-${randomValue}`;
+}
+
+function toggleOtherAddress(select) {
+    const otherAddress = document.getElementById('other-address');
+    otherAddress.style.display = select.value === 'other' ? 'block' : 'none';
+}
+
+function showModal(elementId) {
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById(elementId).style.display = 'block';
+}
+
+function hideModal(elementId) {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById(elementId).style.display = 'none';
+}
+
+async function validateForm(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('checkout-form');
+    if (form.checkValidity()) {
+        showModal('loading');
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        hideModal('loading');
+        showModal('success');
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        hideModal('success');
+        document.getElementById('orderCodeValue').textContent = orderCode;
+        showModal('orderCodeModal');
+    } else {
+        form.reportValidity();
+    }
+}
+
+document.getElementById('checkout-form').addEventListener('submit', validateForm);
+document.getElementById('closeModal').addEventListener('click', () => hideModal('orderCodeModal'));
+
 window.addEventListener('DOMContentLoaded', () => {
     rendertoupi();
 
     const checkoutForm = document.getElementById('checkout-form');
+
     checkoutForm.addEventListener('submit', function(event) {
         event.preventDefault();
+        
+        orderCode = generateUniqueOrderCode();
 
         const fullName = document.getElementById('billing-name').value;
         const email = document.getElementById('billing-email').value;
@@ -127,7 +178,6 @@ window.addEventListener('DOMContentLoaded', () => {
         const time = document.getElementById('delivery-time').value;
         const otheraddress = document.getElementById('other-address').value;
 
-        // Lấy lại giỏ hàng và tính toán subtotal
         const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
         let subtotal = 0;
         let cookiesCount = 0;
@@ -152,16 +202,19 @@ window.addEventListener('DOMContentLoaded', () => {
             cookiesCount -= 3;
         }
         subtotal -= discount;
+
         const orderData = {
-            fullName: fullName,
+            fullName: orderCode + ' - '  + fullName,
             email: email,
-            address: address + ' - ' + otheraddress,
+            address: address + (otheraddress ? ` - ${otheraddress}` : ''),
             city: day + ' - ' + time,
             zip: zip,
             cartItems: toupi.map((item, index) => `${item.name} - ${item.quantity}`).join(', '),
             subtotal: subtotal
         };
+
         console.log('Order data:', orderData);
+
         const googleAppsScriptUrl = 'https://script.google.com/macros/s/AKfycbxOxB3-Zdt8GKdcjMBs1A2IoPEClKI4vuCgJol8P6c8pKt9kfo7FYVCKiNk92RjhI4x0Q/exec';
         fetch(googleAppsScriptUrl, {
             method: 'POST',
@@ -171,27 +224,26 @@ window.addEventListener('DOMContentLoaded', () => {
             body: JSON.stringify(orderData),
             mode: 'no-cors'
         })
-        .then(() => {
-            console.log('Order submitted successfully');
+            .then(() => {
+                console.log('Order submitted successfully');
 
-            localStorage.removeItem('toupi');
-
-            document.getElementById('cartItems').innerHTML = '';
-            document.getElementById('subtotal').textContent = '0 VND';
-
-            checkoutForm.reset();
-        })
-        .catch(error => {
-            console.error('Error submitting order:', error);
-            alert('There was an error processing your order. Please try again.');
-        });        
+                localStorage.removeItem('toupi');
+                document.getElementById('cartItems').innerHTML = '';
+                document.getElementById('subtotal').textContent = '0 VND';
+                document.getElementById('discountCombos').innerHTML = '';
+                checkoutForm.reset();
+            })
+            .catch(error => {
+                console.error('Error submitting order:', error);
+                alert('There was an error processing your order. Please try again.');
+            });
     });
+
 });
 
-// Hàm removeItem dùng để xóa mục khỏi giỏ hàng
 function removeItem(index) {
     const toupi = JSON.parse(localStorage.getItem('toupi')) || [];
-    toupi.splice(index, 1); // Xóa mục khỏi giỏ hàng
-    localStorage.setItem('toupi', JSON.stringify(toupi)); // Cập nhật lại localStorage
-    rendertoupi(); // Gọi lại rendertoupi để cập nhật giao diện
+    toupi.splice(index, 1);
+    localStorage.setItem('toupi', JSON.stringify(toupi));
+    rendertoupi();
 }

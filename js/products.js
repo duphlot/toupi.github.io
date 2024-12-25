@@ -116,7 +116,7 @@ function displaytoupiProducts() {
             itemDiv.classList.add('cart-product', 'd-flex', 'justify-content-between', 'align-items-center', 'mb-3');
             itemDiv.innerHTML = `
                 <div class="flex-grow-1">
-                    <h4 class="cart-product-title mb-1" style="font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">${item.name}</h4>
+                    <h4 class="cart-product-title mb-1">${item.name}</h4>
                 </div>
                 <div class="d-flex align-items-center justify-content-center flex-grow-1">
                     <div class="item-price-quantity d-flex flex-column align-items-center">
