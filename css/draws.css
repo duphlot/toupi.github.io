@@ -53,12 +53,13 @@
     clip-path: ellipse(50% 50% at 50% 50%);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 490px) {
     .awning {
         height: 10vh;
     }
 
     .stripe {
+        width: 12.5%;
         height: 10vh;
     }
 
@@ -72,7 +73,7 @@
     }
 
     .wave {
-        width: 10vh;
+        width: 20vh;
         height: 10vh;
         top: -2.5vh;
     }

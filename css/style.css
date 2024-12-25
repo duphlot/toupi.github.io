@@ -1,17 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    background-color: #c9d6ff;
-    background: linear-gradient(to right, #e2e2e2,#c9d6ff);
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
     color: #333;
-    margin: 0;
-    padding: 0;
     font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
     font-size: 16px;
     line-height: 1.5;
@@ -24,7 +21,6 @@ h1, h2, a, p, code, pre, .navbar-nav .nav-item .nav-link, #team-introduction h2,
 
 h1, h2 {
     font-weight: bold;
-    color: #333;
     margin-bottom: 15px;
 }
 
@@ -40,7 +36,6 @@ a:hover {
 
 p {
     font-size: 1em;
-    color: #333;
     line-height: 1.6;
     margin-bottom: 20px;
 }
@@ -63,7 +58,6 @@ pre {
 
 .navbar-logo {
     height: 45px;
-    width: auto;
     margin-top: -15px;
     display: block;
 }
@@ -74,25 +68,21 @@ pre {
 .section:nth-child(5) { background-color: #fbd771; }
 .section:nth-child(6) { background-color: #ded7fb; }
 
-
 .nav-item.custom-nav-item:nth-child(1) { background-color: #FFF6E3; border-radius: 10px 10px 0 0; max-width: 100px; }
 .nav-item.custom-nav-item:nth-child(2) { background-color: #ded7fb; border-radius: 10px 10px 0 0; max-width: 100px; }
 .nav-item.custom-nav-item:nth-child(3) { background-color: #eec1e6; border-radius: 10px 10px 0 0; max-width: 100px; }
 .nav-item.custom-nav-item:nth-child(4) { background-color: #fbd771; border-radius: 10px 10px 0 0; max-width: 100px; }
 
-
-.section{
+.section {
     height: 86vh;
     border-radius: 20px;
     border-top-right-radius: 0;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 0 10px;
     overflow: auto;
     overflow-x: hidden;
     scrollbar-width: thin;
-    padding:10px;
+    padding: 10px;
 }
-
 
 .text-container {
     text-align: left;
@@ -149,55 +139,44 @@ pre {
     margin: 20px 0;
 }
 
-  .logo {
+.logo {
     text-align: center;
     animation: float 3s infinite ease-in-out;
-  }
+}
 
 .logo .toupi {
-    font-size: 8rem; 
+    font-size: 8rem;
     font-family: 'Pacifico', cursive;
     color: #f295da;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo .bead-bake {
-    font-size: 4rem; 
+    font-size: 4rem;
     font-family: 'Pacifico', cursive;
     color: #6981f3;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     animation: shake 2s infinite alternate;
 }
 
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
 
-  @keyframes bounce {
+@keyframes bounce {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
-  }
+}
 
-  @keyframes shake {
+@keyframes shake {
     0% { transform: rotate(0deg); }
     25% { transform: rotate(-5deg); }
     50% { transform: rotate(5deg); }
     75% { transform: rotate(-5deg); }
     100% { transform: rotate(0deg); }
-  }
-
-
-
-
-
-
-
+}
 
 .card-text {
     color: white;
@@ -247,6 +226,7 @@ pre {
     padding-left: 0;
     margin-bottom: 0;
 }
+
 .navbar-nav .nav-item {
     margin: 0 5px;
     width: 200px;
@@ -269,22 +249,21 @@ pre {
 .nav-item.custom-nav-item:hover {
     opacity: 0.8;
 }
-@media (max-width: 850px) {
 
-    /*warning*/
+@media (max-width: 1000px) {
     .text-container {
         font-size: 1.2rem;
         padding: 15px;
-        margin: 20px auto; 
-        line-height: 1.6; 
+        margin: 20px auto;
+        line-height: 1.6;
     }
 
-    .text-container h2{
+    .text-container h2 {
         font-size: 1.2rem;
     }
 
     .text-container ol {
-        padding-left: 15px; 
+        padding-left: 15px;
     }
 
     .text-container ul {
@@ -292,15 +271,15 @@ pre {
     }
 
     .text-container ol > li {
-        padding-left: 0; 
+        padding-left: 0;
     }
 
     .text-container ol > li:before {
-        font-size: 0.5rem; 
+        font-size: 0.5rem;
     }
 
     .text-container ul li {
-        margin-bottom: 8px; 
+        margin-bottom: 8px;
     }
 
     .text-container span {
@@ -308,14 +287,14 @@ pre {
     }
 
     .text-container hr {
-        margin: 15px 0; 
+        margin: 15px 0;
     }
 
-    /*section*/
-    .section{
+    .section {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
+
     body, .hero h1, .hero .btn, footer, #team-introduction h2, #products h2, #team-introduction ul li, #products ul li, #team-introduction .section-title h3, #products .section-title h3, #team-introduction .section-title p, #team-introduction .section-title ul, #products .section-title p, #products .section-title ul {
         font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', monospace;
     }
@@ -323,6 +302,7 @@ pre {
     body {
         font-size: 12px;
     }
+
     .cardproduct2 {
         padding-left: 0;
     }
@@ -332,11 +312,9 @@ pre {
     }
 
     .navbar {
-        display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-left: -8px;
-        margin-right: -8px;
+        margin: 0 -8px;
     }
 
     .navbar .container {
@@ -351,7 +329,6 @@ pre {
 
     .navbar-nav .nav-item {
         width: 100%;
-        text-align: center;
         padding: 10px 0;
     }
 
@@ -362,16 +339,17 @@ pre {
     .navbar-nav .nav-item.active .nav-link, .navbar-nav .nav-item:hover {
         color: #333;
     }
-    
-    .under{
+
+    .under {
         margin-top: -20px;
     }
-    .navbar-logo{
+
+    .navbar-logo {
         height: 40px;
         padding-bottom: 10px;
     }
+
     .marquee-container {
-        width: auto;
         margin-top: -30px;
     }
 
@@ -391,6 +369,28 @@ pre {
 
     .navbar-nav .nav-item {
         width: 30%;
+        height: 40px;
+    }
+
+    .navbar-collapse {
+        display: block !important;
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+
+    .section {
+        padding-bottom: 80px;
+    }
+
+    .head-tag {
+        margin-bottom: 40px;
+        margin-top: 20px;
+    }
+
+    .navbar-nav .nav-item {
+        width: 30%;
         text-align: center;
         padding: 10px 0;
         height: 40px;
@@ -405,5 +405,8 @@ pre {
     }
     .section{
         padding-bottom: 80px;
+    }
+    .head-tag{
+        margin-bottom: 40px;
     }
 }

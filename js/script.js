@@ -1,6 +1,10 @@
 // Số lượng sọc và lượn sóng
-const stripeCount = 10;
-const waveCount = 15;
+let stripeCount = 10;
+let waveCount = 15;
+if (window.innerWidth <= 490) {
+    waveCount = 10;
+    stripeCount = 8;
+}
 
 // Thêm các sọc vào phần mái che
 const awning = document.getElementById('awning');
